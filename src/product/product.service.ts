@@ -25,8 +25,15 @@ export class ProductService {
     return `This action returns a #${id} product`;
   }
 
-  update(id: number, updateProductDto: UpdateProductDto) {
-    return `This action updates a #${id} product`;
+  update(id: number, updateProductDto: UpdateProductDto): Product {
+    const { goods_name, price, salt } = updateProductDto;
+    const good = {
+      goods_name: goods_name,
+      price: price,
+      salt: salt,
+    };
+    this.goods[id] = good;
+    return this.goods[id];
   }
 
   remove(id: number) {
